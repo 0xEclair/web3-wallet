@@ -6,14 +6,16 @@ export class Wallet {
 
   static fromMnemonic(mnemonic: string): Wallet {
     const wallet = new Wallet()
-    wallet.w = ethers.Wallet.fromMnemonic(mnemonic, "m/44'/60'/0'/0/0")
+    const provider = new ethers.providers.JsonRpcProvider("http://192.168.31.69:7545")
+    wallet.w = new ethers.Wallet(ethers.Wallet.fromMnemonic(mnemonic, "m/44'/60'/0'/0/0"), provider)
 
     return wallet
   }
 
   static fromPrivateKey(privateKey: string): Wallet {
     const wallet = new Wallet()
-    wallet.w = new ethers.Wallet(privateKey)
+    const provider = new ethers.providers.JsonRpcProvider("http://192.168.31.69:7545")
+    wallet.w = new ethers.Wallet(privateKey, provider)
 
     return wallet
   }
@@ -36,6 +38,21 @@ export class Wallet {
 
   async signMessage(data: string): Promise<string> {
     return this.w.signMessage(data)
+  }
+
+  async transfer(to: string, amount: string): Promise<ethers.ethers.providers.TransactionResponse> {
+    const value = ethers.utils.parseEther(amount)
+    const tx = {
+      to,
+      value
+    }
+    const limit = await this.w.estimateGas(tx)
+    return this.w.sendTransaction({
+      ...tx,
+      gasPrice: await this.w.provider.getGasPrice(),
+      gasLimit: limit,
+      nonce: await this.w.getTransactionCount()
+    })
   }
 
   log(): string {
