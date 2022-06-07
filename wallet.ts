@@ -1,23 +1,34 @@
-import * as ethers from 'ethers'
+import * as ethers from "ethers"
+
+const defaultPath = "m/44'/60'/0'/0/"
 
 export class Wallet {
   private w: ethers.Wallet
   private constructor() {}
 
-  static fromMnemonic(mnemonic: string): Wallet {
+  static fromMnemonic(mnemonic: string, path?: string, index?: number): Wallet {
     const wallet = new Wallet()
-    const provider = new ethers.providers.JsonRpcProvider("http://192.168.31.69:7545")
-    wallet.w = new ethers.Wallet(ethers.Wallet.fromMnemonic(mnemonic, "m/44'/60'/0'/0/0"), provider)
+    if(!path) {
+      path = defaultPath
+    }
+    if(!index) {
+      index = 0
+    }
+    wallet.w = new ethers.Wallet(ethers.Wallet.fromMnemonic(mnemonic, path + index.toString()))
 
     return wallet
   }
 
   static fromPrivateKey(privateKey: string): Wallet {
     const wallet = new Wallet()
-    const provider = new ethers.providers.JsonRpcProvider("http://192.168.31.69:7545")
-    wallet.w = new ethers.Wallet(privateKey, provider)
+    wallet.w = new ethers.Wallet(privateKey)
 
     return wallet
+  }
+
+  setNetwork(url: string) {
+    const provider = new ethers.providers.JsonRpcProvider(url)
+    this.w = new ethers.Wallet(this.w, provider)
   }
 
   publicKey(): string {

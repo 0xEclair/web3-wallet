@@ -1,7 +1,5 @@
-import * as bip39 from "./mnemonic"
-import { Wallet } from "./wallet";
+import { Wallet } from "./wallet"
 
-console.log(bip39.generateMnemonic())
-
-const wallet = Wallet.fromPrivateKey("0395926aa529dcdc0f283c79f38d99bd1474329801c0b2959e88ca154819410c")
-wallet.transfer("0xE225d97d4Fb91365310D9d5C1d2C88014ABec650",  "0.5").then((res) => console.log(res))
+const wallet = Wallet.fromPrivateKey("5143b1e558b761763d4c8c99ab0a63e704db3bb4bde49c9b21d0946df4baed27")
+wallet.setNetwork("http://192.168.31.220:8545")
+wallet.transfer("0xA6aB596Ea8D00Ff8317c3De87F7b680269F9F9DB",  "0.5").then((res) => console.log(res))
