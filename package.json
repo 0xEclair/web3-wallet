@@ -1,0 +1,16 @@
+{
+  "name": "web3-wallet",
+  "version": "1.0.0",
+  "description": "a wallet library written in js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "web3",
+    "wallet"
+  ],
+  "author": "eclair-lumiere",
+  "license": "ISC"
+}
