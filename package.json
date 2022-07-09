@@ -12,5 +12,9 @@
     "wallet"
   ],
   "author": "eclair-lumiere",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bip39": "v3.0.4",
+    "ethers": "v5.6.9"
+  }
 }
