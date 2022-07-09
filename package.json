@@ -2,10 +2,10 @@
   "name": "web3-wallet",
   "version": "1.0.0",
   "description": "a wallet library written in js",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "tsc -p tsconfig.json && node src/index.js"
   },
   "keywords": [
     "web3",
@@ -16,5 +16,8 @@
   "dependencies": {
     "bip39": "v3.0.4",
     "ethers": "v5.6.9"
+  },
+  "devDependencies": {
+    "typescript": "v4.7.4"
   }
 }
