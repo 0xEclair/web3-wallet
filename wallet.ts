@@ -66,6 +66,10 @@ export class Wallet {
     })
   }
 
+  contract(address: string, abi: string): ethers.Contract {
+    return new ethers.Contract(address, abi, this.w)
+  }
+
   log(): string {
     const strings = [
       this.publicKey(),
