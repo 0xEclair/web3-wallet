@@ -1,16 +1,32 @@
 {
-  "name": "web3-wallet",
-  "version": "1.0.0",
-  "description": "a wallet library written in js",
-  "main": "index.js",
+  "name": "ess-js",
+  "version": "1.1.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "node src/index_test.js",
+    "build:rollup": "rollup -c scripts/rollup.config.js"
   },
-  "keywords": [
-    "web3",
-    "wallet"
-  ],
-  "author": "eclair-lumiere",
-  "license": "ISC"
+  "dependencies": {
+    "ethers": "v5.6.9"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.4",
+    "@rollup/plugin-babel": "^6.0.0",
+    "@rollup/plugin-commonjs": "^23.0.0",
+    "@rollup/plugin-json": "^5.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "browserify": "^17.0.0",
+    "fs-extra": "^10.1.0",
+    "os": "^0.1.2",
+    "rollup": "^2.79.1",
+    "rollup-plugin-polyfill-node": "^0.10.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-visualizer": "^5.8.2",
+    "stream": "^0.0.2",
+    "stream-http": "^3.2.0"
+  }
 }
