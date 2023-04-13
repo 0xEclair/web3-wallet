@@ -28,6 +28,5 @@ yarn-error.log*
 
 # build
 dist/
-index.html
 report.html
 stats.html

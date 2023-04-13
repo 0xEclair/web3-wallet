@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<script src="dist/ess.js"></script>
+<script type="module">
+  await ConnectMetamask()
+  var wallet = Wallet.fromMetamask()
+
+  console.log(await wallet.address())
+  console.log(await wallet.transfer("0xE88a42c47928818E5775fb3cd076792353bE938b", "0.001"))
+  console.log(await wallet.signMessage("Hello, World."))
+</script>
+<body>
+This HTML file is used for testing.
+</body>
+</html>
